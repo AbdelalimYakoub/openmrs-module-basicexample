@@ -9,17 +9,15 @@
  */
 package org.openmrs.module.basicexample;
 
-import org.openmrs.BaseOpenmrsData;
-import org.openmrs.User;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import org.openmrs.BaseOpenmrsData;
+import org.openmrs.User;
 
 /**
  * Please note that a corresponding table schema must be created in liquibase.xml.
@@ -41,6 +39,9 @@ public class Item extends BaseOpenmrsData {
 	@Basic
 	@Column(name = "description", length = 255)
 	private String description;
+	
+	// Adding 'name' field
+	private String name;
 	
 	@Override
 	public Integer getId() {
@@ -76,5 +77,15 @@ public class Item extends BaseOpenmrsData {
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	// Adding 'getName' for the new 'name' field
+	public String getName() {
+		return name;
+	}
+	
+	// Adding 'setName' for the new 'name' field
+	public void setName(String name) {
+		this.name = name;
 	}
 }
